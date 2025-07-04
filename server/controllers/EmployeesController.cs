@@ -66,6 +66,21 @@ public class EmployeesController : ControllerBase
         await _context.SaveChangesAsync();
         return NoContent();
     }
+    
+    // GET: api/employees/5
+[HttpGet("{id}")]
+public async Task<ActionResult<Employee>> GetEmployee(int id)
+{
+    var employee = await _context.Employees.FindAsync(id);
+    
+    if (employee == null)
+    {
+        return NotFound();
+    }
+    
+    return employee;
+}
+    
 }
 
 }
