@@ -1,0 +1,37 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><input [(ngModel)]="filters.department" placeholder="Фильтр отдела" /></th>
+        <th><input [(ngModel)]="filters.fullName" placeholder="ФИО" /></th>
+        <th><input type="date" [(ngModel)]="filters.birthDateFrom" /> - <input type="date" [(ngModel)]="filters.birthDateTo" /></th>
+        <th></th>
+        <th><input [(ngModel)]="filters.salaryMin" placeholder="Мин. зарплата" /></th>
+        <th>
+          <button class="btn btn-success btn-sm" (click)="openCreateModal()">Создать</button>
+        </th>
+      </tr>
+      <tr>
+        <th>Отдел</th>
+        <th>ФИО</th>
+        <th>Дата рождения</th>
+        <th>Дата устройства</th>
+        <th>Зарплата</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees">
+        <td>{{ emp.department }}</td>
+        <td>{{ emp.fullName }}</td>
+        <td>{{ emp.birthDate | date:'dd.MM.yyyy' }}</td>
+        <td>{{ emp.hireDate | date:'dd.MM.yyyy' }}</td>
+        <td>{{ emp.salary | currency }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="editEmployee(emp)">Ред.</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp.id)">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
