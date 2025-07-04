@@ -7,10 +7,10 @@ public class Employee
     public int Id { get; set; }
     
     [Required]
-    public string Department { get; set; }
+    public string Department { get; set; } = string.Empty;
     
     [Required]
-    public string FullName { get; set; }
+    public string FullName { get; set; } = string.Empty;
     
     [Required]
     public DateTime BirthDate { get; set; }
