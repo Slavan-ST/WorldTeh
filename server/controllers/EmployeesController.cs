@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using server.Models;
+using WorldTeh.Server.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
+using WorldTeh.Server.Data;
 
 namespace WorldTeh.Server.Controllers
 {
@@ -19,8 +21,8 @@ public class EmployeesController : ControllerBase
     // GET: api/employees
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees(
-        [FromQuery] string departmentFilter = null,
-        [FromQuery] string nameFilter = null)
+        [FromQuery] string? departmentFilter = null,
+        [FromQuery] string? nameFilter = null)
     {
         var query = _context.Employees.AsQueryable();
 
