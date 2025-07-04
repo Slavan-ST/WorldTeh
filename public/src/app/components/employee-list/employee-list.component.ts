@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.scss']
+  styleUrls: ['./employee-list.component.scss'],
+  standalone: false,
+  imports: [
+    CommonModule,
+    FormsModule,
+    EmployeeFormComponent
+  ]
 })
+
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
   filteredEmployees: Employee[] = [];

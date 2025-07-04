@@ -1,16 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Employee } from '../../models/employee';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
-  styleUrls: ['./employee-form.component.scss']
+  styleUrls: ['./employee-form.component.scss'],
+  standalone: false,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ]
 })
 export class EmployeeFormComponent {
-  @Input() employee: Employee | null = null;
-  @Output() save = new EventEmitter<Employee>();
+  @Input() employee: any;
   @Output() close = new EventEmitter<void>();
+  @Output() save = new EventEmitter<any>();
 
   employeeForm: FormGroup;
 
@@ -24,23 +29,15 @@ export class EmployeeFormComponent {
     });
   }
 
-  ngOnChanges(): void {
+  ngOnChanges() {
     if (this.employee) {
       this.employeeForm.patchValue(this.employee);
     }
   }
 
-  onSubmit(): void {
+  onSubmit() {
     if (this.employeeForm.valid) {
-      const employeeData = {
-        ...this.employee,
-        ...this.employeeForm.value
-      };
-      this.save.emit(employeeData);
+      this.save.emit(this.employeeForm.value);
     }
-  }
-
-  onClose(): void {
-    this.close.emit();
   }
 }
