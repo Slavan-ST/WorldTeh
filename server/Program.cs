@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using YourProjectName.Data;
-using YourProjectName.Models;
+using WorldTeh.Server.Data;
+using WorldTeh.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

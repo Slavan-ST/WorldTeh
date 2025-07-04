@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using YourProjectName.Models;
+using WorldTeh.Server.Models;
 
-namespace YourProjectName.Data
+namespace WorldTeh.Server.Data
 {
     public class ApplicationDbContext : DbContext
     {
