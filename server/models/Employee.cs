@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace WorldTeh.Server.Models
 {
 public class Employee
