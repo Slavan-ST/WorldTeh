@@ -1,5 +1,5 @@
 namespace WorldTeh.Server.Controllers
-
+{
 [ApiController]
 [Route("api/[controller]")]
 public class EmployeesController : ControllerBase
@@ -59,4 +59,6 @@ public class EmployeesController : ControllerBase
         await _context.SaveChangesAsync();
         return NoContent();
     }
+}
+
 }

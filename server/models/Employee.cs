@@ -1,5 +1,5 @@
 namespace WorldTeh.Server.Models
-
+{
 public class Employee
 {
     public int Id { get; set; }
@@ -19,4 +19,5 @@ public class Employee
     [Required]
     [Range(0, double.MaxValue)]
     public decimal Salary { get; set; }
+}
 }
