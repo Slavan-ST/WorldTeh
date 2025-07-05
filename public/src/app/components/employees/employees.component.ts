@@ -3,9 +3,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employees',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
