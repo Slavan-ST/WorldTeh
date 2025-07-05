@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { AboutCompanyComponent } from './components/about-company/about-company.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
-import { routes } from './app.routes'; // Убедитесь, что пути корректны
 
 @NgModule({
   declarations: [
@@ -19,7 +18,7 @@ import { routes } from './app.routes'; // Убедитесь, что пути к
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes) // Подключение роутинга
+    RouterModule.forRoot([])
   ],
   bootstrap: [AppComponent]
 })

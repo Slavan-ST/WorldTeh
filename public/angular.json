@@ -8,7 +8,8 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        }
+        },
+        "standalone": false
       },
       "root": "",
       "sourceRoot": "src",
@@ -108,3 +109,5 @@
   },
   "defaultProject": "public"
 }
+
+
