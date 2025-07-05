@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
-import { AboutComponent } from './components/about/about.component';
+import { AboutComponent } from './components/about/about';
 
 @NgModule({
   declarations: [
