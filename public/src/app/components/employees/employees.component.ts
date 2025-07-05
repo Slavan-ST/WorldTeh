@@ -42,15 +42,16 @@ export class EmployeesComponent implements OnInit {
   }
 
   applyFilters(): void {
-    this.filteredEmployees = this.employees.filter(employee => {
-      return (
-        (!this.filters.department || employee.department.toLowerCase().includes(this.filters.department.toLowerCase())) &&
-        (!this.filters.fullName || employee.fullName.toLowerCase().includes(this.filters.fullName.toLowerCase())) &&
-        (!this.filters.birthDate || new Date(employee.birthDate).toDateString() === this.filters.birthDate.toDateString()) &&
-        (!this.filters.employmentDate || new Date(employee.employmentDate).toDateString() === this.filters.employmentDate.toDateString()) &&
-        (!this.filters.salary || employee.salary >= Number(this.filters.salary))
-    });
-  }
+  this.filteredEmployees = this.employees.filter(employee => {
+    return (
+      (!this.filters.department || employee.department.toLowerCase().includes(this.filters.department.toLowerCase())) &&
+      (!this.filters.fullName || employee.fullName.toLowerCase().includes(this.filters.fullName.toLowerCase())) &&
+      (!this.filters.birthDate || new Date(employee.birthDate).toDateString() === this.filters.birthDate.toDateString()) &&
+      (!this.filters.employmentDate || new Date(employee.employmentDate).toDateString() === this.filters.employmentDate.toDateString()) &&
+      (!this.filters.salary || employee.salary >= Number(this.filters.salary))
+    ); // <-- Здесь была добавлена недостающая скобка
+  });
+}
 
   sort(column: string): void {
     if (this.sortColumn === column) {
