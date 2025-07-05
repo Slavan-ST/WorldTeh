@@ -21,9 +21,10 @@ import { EmployeeFormComponent } from './components/employee-form/employee-form.
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot([])
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
