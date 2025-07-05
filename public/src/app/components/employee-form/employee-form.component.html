@@ -1,34 +1,38 @@
 <div class="modal-header">
-  <h5 class="modal-title">{{ employee ? 'Редактирование' : 'Создание' }} сотрудника</h5>
-  <button type="button" class="btn-close" (click)="onClose()"></button>
+  <h4 class="modal-title">{{employee ? 'Редактирование' : 'Добавление'}} сотрудника</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
+
 <div class="modal-body">
-  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="submit()">
     <div class="mb-3">
       <label class="form-label">Отдел</label>
-      <input type="text" class="form-control" formControlName="department">
+      <input type="text" class="form-control" [(ngModel)]="formData.department" name="department" required>
     </div>
+    
     <div class="mb-3">
       <label class="form-label">Ф.И.О.</label>
-      <input type="text" class="form-control" formControlName="fullName">
+      <input type="text" class="form-control" [(ngModel)]="formData.fullName" name="fullName" required>
     </div>
+    
     <div class="mb-3">
       <label class="form-label">Дата рождения</label>
-      <input type="date" class="form-control" formControlName="birthDate">
+      <input type="date" class="form-control" [(ngModel)]="formData.birthDate" name="birthDate" required>
     </div>
+    
     <div class="mb-3">
       <label class="form-label">Дата устройства</label>
-      <input type="date" class="form-control" formControlName="employmentDate">
+      <input type="date" class="form-control" [(ngModel)]="formData.employmentDate" name="employmentDate" required>
     </div>
+    
     <div class="mb-3">
-      <label class="form-label">Зарплата</label>
-      <input type="number" class="form-control" formControlName="salary">
+      <label class="form-label">Заработная плата</label>
+      <input type="number" class="form-control" [(ngModel)]="formData.salary" name="salary" required>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="onClose()">Отмена</button>
-      <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">
-        Сохранить
-      </button>
+    
+    <div class="text-end">
+      <button type="button" class="btn btn-secondary me-2" (click)="activeModal.dismiss()">Отмена</button>
+      <button type="submit" class="btn btn-primary">Сохранить</button>
     </div>
   </form>
 </div>

@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2>Сотрудники</h2>
+  
+  <div class="mb-3">
+    <input type="text" class="form-control mb-2" placeholder="Фильтр по отделу" 
+           [(ngModel)]="filters.department" (input)="applyFilters()">
+    <input type="text" class="form-control mb-2" placeholder="Фильтр по ФИО" 
+           [(ngModel)]="filters.fullName" (input)="applyFilters()">
+    <input type="date" class="form-control mb-2" placeholder="Фильтр по дате рождения"
+           [(ngModel)]="filters.birthDate" (change)="applyFilters()">
+    <input type="date" class="form-control mb-2" placeholder="Фильтр по дате устройства"
+           [(ngModel)]="filters.employmentDate" (change)="applyFilters()">
+    <input type="number" class="form-control" placeholder="Фильтр по ЗП (мин. значение)"
+           [(ngModel)]="filters.salary" (input)="applyFilters()">
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th (click)="sort('department')">Отдел 
+          <span *ngIf="sortColumn === 'department'">{{sortDirection === 'asc' ? '↑' : '↓'}}</span></th>
+        <th (click)="sort('fullName')">Ф.И.О 
+          <span *ngIf="sortColumn === 'fullName'">{{sortDirection === 'asc' ? '↑' : '↓'}}</span></th>
+        <th (click)="sort('birthDate')">Дата рождения 
+          <span *ngIf="sortColumn === 'birthDate'">{{sortDirection === 'asc' ? '↑' : '↓'}}</span></th>
+        <th (click)="sort('employmentDate')">Дата устройства 
+          <span *ngIf="sortColumn === 'employmentDate'">{{sortDirection === 'asc' ? '↑' : '↓'}}</span></th>
+        <th (click)="sort('salary')">Заработная плата 
+          <span *ngIf="sortColumn === 'salary'">{{sortDirection === 'asc' ? '↑' : '↓'}}</span></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of filteredEmployees">
+        <td>{{employee.department}}</td>
+        <td>{{employee.fullName}}</td>
+        <td>{{employee.birthDate | date:'dd.MM.yyyy'}}</td>
+        <td>{{employee.employmentDate | date:'dd.MM.yyyy'}}</td>
+        <td>{{employee.salary | currency}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-2" (click)="openEmployeeForm(employee)">Редактировать</button>
+          <button class="btn btn-sm btn-danger" (click)="confirmDelete(employee)">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success" (click)="openEmployeeForm()">Добавить сотрудника</button>
+</div>

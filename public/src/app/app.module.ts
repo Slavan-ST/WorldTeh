@@ -1,30 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { AboutCompanyComponent } from './components/about-company/about-company.component';
+import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
-import { AboutComponent } from './components/about/about';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent,
-    EmployeeFormComponent,
-    AboutComponent
+    AboutCompanyComponent,
+    EmployeesComponent,
+    EmployeeFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    CommonModule,
     NgbModule
   ],
   providers: [],

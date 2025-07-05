@@ -1,43 +1,41 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeService } from '../../services/employee.service';
+import { Employee } from '../../models/employee';
 
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
-  styleUrls: ['./employee-form.component.scss'],
-  standalone: false,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ]
+  styleUrls: ['./employee-form.component.css']
 })
 export class EmployeeFormComponent {
-  @Input() employee: any;
-  @Output() close = new EventEmitter<void>();
-  @Output() save = new EventEmitter<any>();
+  @Input() employee: Employee | null = null;
+  formData: Employee = {
+    department: '',
+    fullName: '',
+    birthDate: new Date(),
+    employmentDate: new Date(),
+    salary: 0
+  };
 
-  employeeForm: FormGroup;
+  constructor(
+    public activeModal: NgbActiveModal,
+    private employeeService: EmployeeService
+  ) { }
 
-  constructor(private fb: FormBuilder) {
-    this.employeeForm = this.fb.group({
-      department: ['', Validators.required],
-      fullName: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      employmentDate: ['', Validators.required],
-      salary: [0, [Validators.required, Validators.min(0)]]
-    });
-  }
-
-  ngOnChanges() {
+  ngOnInit(): void {
     if (this.employee) {
-      this.employeeForm.patchValue(this.employee);
+      this.formData = { ...this.employee };
     }
   }
 
-  onSubmit() {
-    if (this.employeeForm.valid) {
-      this.save.emit(this.employeeForm.value);
+  submit(): void {
+    if (this.employee) {
+      this.employeeService.updateEmployee(this.employee.id!, this.formData)
+        .subscribe(() => this.activeModal.close(true));
+    } else {
+      this.employeeService.createEmployee(this.formData)
+        .subscribe(() => this.activeModal.close(true));
     }
   }
 }

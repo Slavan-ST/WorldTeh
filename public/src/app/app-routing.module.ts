@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './components/about/about.component';
-import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { AboutCompanyComponent } from './components/about-company/about-company.component';
+import { EmployeesComponent } from './components/employees/employees.component';
 
 const routes: Routes = [
-  { path: 'about', component: AboutComponent },
-  { path: 'employees', component: EmployeeListComponent },
   { path: '', redirectTo: '/about', pathMatch: 'full' },
-  { path: '**', redirectTo: '/about' }
+  { path: 'about', component: AboutCompanyComponent },
+  { path: 'employees', component: EmployeesComponent }
 ];
 
 @NgModule({
