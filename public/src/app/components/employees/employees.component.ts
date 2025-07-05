@@ -7,8 +7,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employees',
-  standalone: false,
-  imports: [CommonModule],
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
