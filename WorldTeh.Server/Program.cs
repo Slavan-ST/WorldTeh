@@ -26,9 +26,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Конфигурация HTTP pipeline
 
-// Инициализация БД 
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -44,11 +42,9 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseHttpsRedirection();
 
