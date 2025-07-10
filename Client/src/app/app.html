@@ -1,10 +1,12 @@
-<mat-toolbar color="primary">
-  <span>Управление сотрудниками</span>
-  <nav>
-    <a mat-button routerLink="/about" routerLinkActive="active">О компании</a>
-    <a mat-button routerLink="/employees" routerLinkActive="active">Сотрудники</a>
-  </nav>
-</mat-toolbar>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container-fluid">
+    <span class="navbar-brand">Управление сотрудниками</span>
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/about" routerLinkActive="active">О компании</a>
+      <a class="nav-link" routerLink="/employees" routerLinkActive="active">Сотрудники</a>
+    </div>
+  </div>
+</nav>
 
 <div class="container">
   <router-outlet></router-outlet>

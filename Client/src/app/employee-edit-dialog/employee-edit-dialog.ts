@@ -1,34 +1,58 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from '../models/employee';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee-edit-dialog',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './employee-edit-dialog.html',
   styleUrls: ['./employee-edit-dialog.css']
 })
 export class EmployeeEditDialog {
+  @Input() set data(value: { employee: Employee | null; isNew: boolean }) {
+    this._isNew = value.isNew;
+    this.initializeForm(value.employee);
+  }
+
   employeeForm: FormGroup;
-  isNew: boolean;
+  private _isNew: boolean = false; // Инициализация
 
   constructor(
-    public dialogRef: MatDialogRef<EmployeeEditDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { employee: Employee },
+    public activeModal: NgbActiveModal,
     private fb: FormBuilder
   ) {
-    this.isNew = !data.employee?.id;
-
     this.employeeForm = this.fb.group({
-      id: [data.employee?.id || 0],
-      department: [data.employee?.department || '', Validators.required],
-      fullName: [data.employee?.fullName || '', Validators.required],
-      birthDate: [data.employee?.birthDate ? new Date(data.employee.birthDate) : null, Validators.required],
-      employmentDate: [data.employee?.employmentDate ? new Date(data.employee.employmentDate) : null, Validators.required],
-      salary: [data.employee?.salary || 0, [Validators.required, Validators.min(0)]]
+      id: [0],
+      department: ['', Validators.required],
+      fullName: ['', Validators.required],
+      birthDate: [null, Validators.required],
+      employmentDate: [null, Validators.required],
+      salary: [0, [Validators.required, Validators.min(0)]]
     });
+  }
+
+  get isNew(): boolean {
+    return this._isNew;
+  }
+
+  private initializeForm(employee: Employee | null): void {
+    this.employeeForm.patchValue({
+      id: employee?.id || 0,
+      department: employee?.department || '',
+      fullName: employee?.fullName || '',
+      birthDate: this.formatDate(employee?.birthDate),
+      employmentDate: this.formatDate(employee?.employmentDate),
+      salary: employee?.salary || 0
+    });
+  }
+
+  private formatDate(dateString?: string): string | null {
+    if (!dateString) return null;
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
   }
 
   onSave(): void {
@@ -36,18 +60,14 @@ export class EmployeeEditDialog {
       const formValue = this.employeeForm.value;
       const employee: Employee = {
         ...formValue,
-        birthDate: formValue.birthDate.toISOString(),
-        employmentDate: formValue.employmentDate.toISOString()
+        birthDate: new Date(formValue.birthDate).toISOString(),
+        employmentDate: new Date(formValue.employmentDate).toISOString()
       };
-      this.dialogRef.close(employee);
+      this.activeModal.close(employee);
     }
   }
 
   onCancel(): void {
-    this.dialogRef.close(null);
-  }
-
-  updateDate(field: string, event: MatDatepickerInputEvent<Date>): void {
-    this.employeeForm.get(field)?.setValue(event.value);
+    this.activeModal.dismiss('cancel');
   }
 }

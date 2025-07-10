@@ -1,73 +1,38 @@
-
-.table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  margin: 16px 0;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.table-container {
-  min-width: 100%;
-  width: max-content;
-}
-
+/* employees.component.css */
 .filters {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
-  align-items: center;
-  flex-wrap: wrap;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-  .filters mat-form-field {
-    flex: 1;
-    min-width: 200px;
+.table th {
+  cursor: pointer;
+  position: relative;
+}
+
+  .table th:hover {
+    background-color: #f1f1f1;
   }
 
-.actions-header {
-  width: 120px;
-  min-width: 120px;
-  text-align: center;
-}
+  .table th.active {
+    background-color: #e9ecef;
+  }
 
-.actions-cell {
-  width: 120px;
-  min-width: 120px;
-  padding: 0 8px !important;
-}
-
-.actions-buttons {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-}
-
-.mat-icon-button {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-
-.add-button {
+.floating-btn {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 100;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-  .filters {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-    .filters > * {
-      width: 100%;
-    }
-
-  .actions-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
+.btn-group .btn {
+  padding: 0.25rem 0.5rem;
 }

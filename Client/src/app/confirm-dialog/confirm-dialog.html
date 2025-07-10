@@ -1,10 +1,13 @@
-<h2 mat-dialog-title>{{ data.title }}</h2>
+<div class="modal-header">
+  <h5 class="modal-title">{{ title }}</h5>
+  <button type="button" class="btn-close" (click)="onCancel()" aria-label="Close"></button>
+</div>
 
-<mat-dialog-content>
-  <p>{{ data.message }}</p>
-</mat-dialog-content>
+<div class="modal-body">
+  <p>{{ message }}</p>
+</div>
 
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">Отмена</button>
-  <button mat-raised-button color="warn" (click)="onConfirm()">Удалить</button>
-</mat-dialog-actions>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Отмена</button>
+  <button type="button" class="btn btn-danger" (click)="onConfirm()">Удалить</button>
+</div>

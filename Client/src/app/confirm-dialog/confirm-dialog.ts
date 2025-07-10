@@ -1,23 +1,27 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, Input } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-confirm-dialog',
-  standalone: false,
+  standalone: true,
   templateUrl: './confirm-dialog.html',
   styleUrls: ['./confirm-dialog.css']
 })
+
 export class ConfirmDialog {
+
+  @Input() title!: string;
+  @Input() message!: string;
+
   constructor(
-    public dialogRef: MatDialogRef<ConfirmDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string }
+    public activeModal: NgbActiveModal
   ) { }
 
   onConfirm(): void {
-    this.dialogRef.close(true);
+    this.activeModal.close(true);
   }
 
   onCancel(): void {
-    this.dialogRef.close(false);
+    this.activeModal.close(false);
   }
 }
