@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>{{ isNew ? 'Добавить сотрудника' : 'Редактировать сотрудника' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="employeeForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Отдел</mat-label>
+      <input matInput formControlName="department" required>
+      <mat-error *ngIf="employeeForm.get('department')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>ФИО</mat-label>
+      <input matInput formControlName="fullName" required>
+      <mat-error *ngIf="employeeForm.get('fullName')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Дата рождения</mat-label>
+      <input matInput [matDatepicker]="birthDatePicker" formControlName="birthDate" required>
+      <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #birthDatePicker></mat-datepicker>
+      <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Дата приема</mat-label>
+      <input matInput [matDatepicker]="employmentDatePicker" formControlName="employmentDate" required>
+      <mat-datepicker-toggle matSuffix [for]="employmentDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #employmentDatePicker></mat-datepicker>
+      <mat-error *ngIf="employeeForm.get('employmentDate')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Зарплата</mat-label>
+      <input matInput type="number" formControlName="salary" required>
+      <span matSuffix>$&nbsp;</span>
+      <mat-error *ngIf="employeeForm.get('salary')?.hasError('required')">
+        Обязательное поле
+      </mat-error>
+      <mat-error *ngIf="employeeForm.get('salary')?.hasError('min')">
+        Зарплата не может быть отрицательной
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Отмена</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!employeeForm.valid">
+    {{ isNew ? 'Добавить' : 'Сохранить' }}
+  </button>
+</mat-dialog-actions>

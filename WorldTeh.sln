@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34818.151
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorldTeh.Server", "WorldTeh.Server\WorldTeh.Server.csproj", "{43014AD3-D93F-45A3-B0B1-89BE348222C1}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Client", "Client\Client.esproj", "{5FBD9DB1-D926-4706-B8AB-6E4FA2C8C718}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43014AD3-D93F-45A3-B0B1-89BE348222C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43014AD3-D93F-45A3-B0B1-89BE348222C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43014AD3-D93F-45A3-B0B1-89BE348222C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43014AD3-D93F-45A3-B0B1-89BE348222C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBD9DB1-D926-4706-B8AB-6E4FA2C8C718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBD9DB1-D926-4706-B8AB-6E4FA2C8C718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBD9DB1-D926-4706-B8AB-6E4FA2C8C718}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5FBD9DB1-D926-4706-B8AB-6E4FA2C8C718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBD9DB1-D926-4706-B8AB-6E4FA2C8C718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBD9DB1-D926-4706-B8AB-6E4FA2C8C718}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F97DC21F-C3AB-4137-A50D-AFB38A06D0E9}
+	EndGlobalSection
+EndGlobal

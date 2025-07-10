@@ -1,0 +1,14 @@
+h2 {
+  margin: 0;
+  padding: 16px 24px;
+  color: #f44336; /* Красный цвет для предупреждения */
+}
+
+mat-dialog-content {
+  padding: 16px 24px;
+}
+
+mat-dialog-actions {
+  padding: 8px 16px;
+  margin-bottom: 0;
+}
